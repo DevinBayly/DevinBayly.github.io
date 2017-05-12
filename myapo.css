@@ -15,16 +15,17 @@ html {
 	}
 body {
     margin: auto;
+    width: 750px;
     padding-right: 1em;
     padding-left: 1em;
-    max-width: 44em; 
+    max-width: 75em;
     border-left: 1px solid black;
     border-right: 1px solid black;
-	color: #555753; 
+    color: #555753;
     color: black;
-	font: 75% georgia, sans-serif;
-	line-height: 1.88889;
-	background: #fff url("file:///home/lil/Documents/BlueBrainProj_study-abroad/gsoc/DevinBayly.github.io/gitbranches.jpg") no-repeat bottom right; 
+    font: 75% georgia, sans-serif;
+    line-height: 1.88889;
+    background: #fff url("https://devinbayly.github.io/gitbranches.jpg") no-repeat bottom right;
 }
 p { 
 	margin-top: 0; 
