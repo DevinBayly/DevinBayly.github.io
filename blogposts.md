@@ -33,3 +33,19 @@ Following this progress my mentor suggested that I make sure I feel completely c
 That about wraps it up for this week!
 
 Until next time
+
+
+#### third week -- dabbling all over
+
+
+This week gave me a good impression of what the rest of the summer might look like as far as the summer of code is concerned. In summary I worked on compression of non-trivial objects, setting up the program environment for boost::hana, combating Cmake strangeness for header paths, and learning some policy based code structure. 
+
+The compression part is still giving me a little bit of grief. So last week I brought into the neuromapp program a small practice function where I compressed a string that said "hello compression" and uncompressed it to see the result. All that went well, so I moved on to trying to compress an empty block, and this didn't go so smoothly. After a conversation with Tim, I learned that there are higher level compress/uncompress utility functions from zlib that I could be using. With this info I happily attempted that implementation, but currently the result of uncompress is a mostly empty block with its first element containing a large negative number, pretty wierd right?
+
+Instead of spending the entire week on that issue, I move on to look at how we can bring in the hana boost meta-programming tool. This was also less straightforward than I had hoped. On boost's page they explain that if you hope to use hana with Cmake you need to simply setup hana as an externalproject for use. I'm not very well versed in Cmake so when the instructions ended there I was dissapointed. To further complicate this issue hana needs the most recent boost package, and g++/gcc compilers. I realized after the fact that my approach to this twist could have made my life harder, but I eventually figured out how to include the correct path so that neuromapp could build with access to the boost/hana.hpp. This whole process has left me feeling slightly more adept with CMake.
+
+This week I was also provided with some sample data to fill out the blocks so I spent some time diving back into IO. I made a couple of generic functionss that could read the data into a block with user specified dimensions, and then had to make a specialized version to create a tiny 1row block holding the header row for the data. This wasn't the easiest thing I ever did, but it currently works for files that are csv's containing float data. I'd like to figure out next week what can be done to make that more flexible, but the compression issues are likely to be my priority.
+
+With all this said, I think I'm getting pretty comfortable with the code that Tim has given me now that I'm having to extend it in various ways. I hope that I can resolve these issues by next week so I can begin my implementation on a compression policy to attach to the block class.
+
+See ya!
