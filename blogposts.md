@@ -60,3 +60,13 @@ Outside of coding I've been attempting to work through a scary looking trello ta
 Since this week is the official beginning to the summer of code it make sense that there was plenty to do. I found out that I had misunderstood what the block reading process entailed, and spent time on Monday and Tuesday getting the >> and  << operator setup with the block object. Block input and output operations are now accomplished by stream redirection which most c++ programmers would expect. Once this was set Tim suggested that I create some boost unit tests. Boost is pretty new to me so this came with a bit of an upfront learning curve. I'm still working out the details of why certain cases fail the tests I wrote, but otherwise we are getting supportive results. Most importantly, I put together a zlib un/compression policy following some of Tim's designs that should allow for compression specific options to be set at the time of block declaration. I'll talk more about why we are approaching block compression in this way when I have a better understanding of policy based design.
 
 Later today I'll be trying out my very first block compressions, and addressing the strangeness that springs up there. Next week I imagine I'll be setting  up unit tests for the compression policy, and starting to read about the uses of inflate and deflate functions that zlib provides to customize my compression to the block.
+
+#### Fifth week -- the eyes of the coder
+
+This week went by in a flash. I started out with the task of making some further changes to the method that reads data into our block. Last week I ended with a setup that allowed for checking block outputs against a hardcoded correct version, but it became pretty clear that this was only "correct" when we had a block of numeric type float. After this week's modifications we are almost at the point where we can convert an original file's contents into the form that would be correct if the read goes through regardless of the block numeric type.
+
+A few days ago I also had a mini breakthrough: I compressed and uncompressed my first block, and the output passed the comparison to a copy made before compression. Currently this is using a method that Tim doesn't prefer, so I'll be looking into how I can accomplish this through an alternate route next week.  
+
+Next week I imagine that I'll be continuing to refine the tests, and creating a complete suite of compression tests.
+
+I apologize for any typos, but I just had my eyes dilated at the Optometrist's office, and I'm working against certain visual distortions.
