@@ -70,3 +70,16 @@ A few days ago I also had a mini breakthrough: I compressed and uncompressed my 
 Next week I imagine that I'll be continuing to refine the tests, and creating a complete suite of compression tests.
 
 I apologize for any typos, but I just had my eyes dilated at the Optometrist's office, and I'm working against certain visual distortions.
+
+
+#### 6th week -- in research gear
+
+This week was the ending of one phase of my project and the beginning of the next. I have been working since my semester ended on setting up a framework for compression experiments using the neuromapp block datatype. Starting this week I finished my test writing, and confirmed that the block can have data read into  it from a specific file, compressed, and uncompressed without permanent changes to the block. This means that now I'm poised to launch in the research phase of the project where I experiment with different libraries, and compression techniques to figure out what is the best implementation to carry into the last phase of the summer of code.
+
+along the lines of these possible improvements I looked into sorting in the last couple days of the week. For 1 dimensional blocks, this was a trivial task that yielded a small gains in our compression factor. The next step that I've been trying to work out is how to leverage the STL sort algorithm for 2 dimensional blocks. It looks like I'll be making up a custom iterator class to apply the working 1 dimensional sort to each column of a block one at a time.
+
+I then went back to the command line tool, and updated it to reflect the changes that have happened to the block since the third week. Back then I hadn't accomplished a working version of block compression, or sorting, so both got rolled into optional flags for a benchmark. This run outputs various stats about block compression for each file in a specified directory. 
+
+Next week I'll be working out the 2 dimensional sorting, and then trying to create another zlib compression option which allows users to specify the compression level they want applied to the block.
+
+ciao!
