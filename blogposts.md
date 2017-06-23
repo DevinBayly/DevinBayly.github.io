@@ -91,6 +91,6 @@ Its almost funny just how simple sorting a 1 dimensional block is. We just say t
 
 Very pleased with myself, I began the task of determining whether this improved our compression at all. Fortunately last week's benchmark improvements left me with a means to output all kinds of stats about runtime performance using a whole directory of files. Having cranked out results for sorted, and unsorted blocks alike I cleaned and briefly analysed the data. If I've been successful attaching this image, you will see that the sorted blocks lead to greater compression factors almost across the board. 
 
-![res_plot](https://devinbayly.github.io/tr_sm.png)
+![res_plot](https://devinbayly.github.io/nicer_and_bytype.png)
 
 what a week! Next week I'll probably be playing around with the zlib utilities in a 2.0 fashion, and maybe event some incredibly low level shuffling of the memory making up our block's data. All in the name of greater levels of compression!
