@@ -83,3 +83,14 @@ I then went back to the command line tool, and updated it to reflect the changes
 Next week I'll be working out the 2 dimensional sorting, and then trying to create another zlib compression option which allows users to specify the compression level they want applied to the block.
 
 ciao!
+
+#### 7th week -- oh the things we do for STL support
+
+
+Its almost funny just how simple sorting a 1 dimensional block is. We just say to the STL sort algorithm "here's the beginning of my block, and there's the end... have at it," and it does! Unfortunately the do what I say and do what I mean aspect gets a little muddied when the block is 2 dimensional. In order to tackle this issue in a way that means at the higher level we still only have to call STL sort for our purposes I set about creating a custom iterator for the block. Foolishly I jumped right in at the Random Access Iterator that is required for sort, without much of a clue about how to implement even the most basic custom iterator. After a day of dealing with compilation errors that left me without much of a sense of progress I shifted to a new branch to incrementally design this beast of an iterator. Going from input iterator to forward to bidirectional wasn't much of a problem, but there was still something of a jump in difficulty to enable random access to positions in the block through an iterator. On Thursday evening I hit the sweet spot of defining enough, but not too many, operators so that sort would zip down a specific column of our block, and leave behind whatever order was given as a predicate. 
+
+Very pleased with myself, I began the task of determining whether this improved our compression at all. Fortunately last week's benchmark improvements left me with a means to output all kinds of stats about runtime performance using a whole directory of files. Having cranked out results for sorted, and unsorted blocks alike I cleaned and briefly analysed the data. If I've been successful attaching this image, you will see that the sorted blocks lead to greater compression factors almost across the board. 
+
+![res_plot](https://devinbayly.github.io/tr_sm.png)
+
+what a week! Next week I'll probably be playing around with the zlib utilities in a 2.0 fashion, and maybe event some incredibly low level shuffling of the memory making up our block's data. All in the name of greater levels of compression!
