@@ -94,3 +94,20 @@ Very pleased with myself, I began the task of determining whether this improved 
 ![res_plot](https://devinbayly.github.io/nicer_and_bytype.png)
 
 what a week! Next week I'll probably be playing around with the zlib utilities in a 2.0 fashion, and maybe event some incredibly low level shuffling of the memory making up our block's data. All in the name of greater levels of compression!
+
+
+### 8 and 9 -- two for one
+
+The last couple of weeks seem to be following a nice sequence of experiment, formalize, analyse. Two weeks ago I was fixing a mistake from the previous week in the way that the column sorting was being performed. Instead of sorting each column row by row from largest to smallest I was supposed to sort an entire block's collection of columns depending on the values within a specific row. Subtly different (perhaps not so subtle). 
+
+With a little bit of experimentation I found that another STL tool called "swap_ranges" was going to do exactly what I needed. To formalize this into an actual process I only had to figure out what the correct order of the specified row was.  Then I could use that to guide where the swap ranges were applied to pairs of iterators (top and bottom of column). 
+
+In analysing blocks that were sorted this way before compression it was clear we were able to get compression factors around 2 times greater than when performed on the original blocks.
+
+This week was much the same, but with an arguably easier transformation performed to the block. Before going any further its worth pointing out that floating point numbers have several different representations: you can have the IEEE745 representation, or you can convert to a triple of binary sets with parts known as the mantissa, the exponent, and the sign. The mantissa is essentially the decimal representation in base 2 once the number has been normalized (decimal place shifted). The exponent is the factor of 2 to the power of the number of places that the decimal was shifted in the previous step. the sign is a 0 or 1 bit representation of whether the original number was positive or negative.
+
+The whole transformation boils down to copying each value from an existing block of floats into a new block where like parts of the triple representation are stored together:sign sign sign sign, ... ,exp exp exp exp, ... ,   mantissa mantissa mantissa mantissa... 
+
+When compressions were run on this instead of the original block we got compressions on the scale of 3x better than those of the original block.
+
+Now that we have a couple of varieties of compressions methods it's time to check on whether we get performance improvements using compression and uncompression as part of the kernel in the tsodyks-markram synapse model, and this is largely what I'll be working on today and next week.
