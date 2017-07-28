@@ -104,14 +104,16 @@ With a little bit of experimentation I found that another STL tool called "swap_
 
 In analysing blocks that were sorted this way before compression it was clear we were able to get compression factors around 2 times greater than when performed on the original blocks.
 
-![sorting benefits]("https://devinbayly.github.io/image_res Sat Jul  1 16:20:22 2017 .pdf")
+![sorting benefits]("https://devinbayly.github.io/comp_types_res.pdf")
+
 This week was much the same, but with an arguably easier transformation performed to the block. Before going any further its worth pointing out that floating point numbers have several different representations: you can have the IEEE745 representation, or you can convert to a triple of binary sets with parts known as the mantissa, the exponent, and the sign. The mantissa is essentially the decimal representation in base 2 once the number has been normalized (decimal place shifted). The exponent is the factor of 2 to the power of the number of places that the decimal was shifted in the previous step. the sign is a 0 or 1 bit representation of whether the original number was positive or negative.
 
 The whole transformation boils down to copying each value from an existing block of floats into a new block where like parts of the triple representation are stored together:sign sign sign sign, ... ,exp exp exp exp, ... ,   mantissa mantissa mantissa mantissa... 
 
 When compressions were run on this instead of the original block we got compressions on the scale of 3x better than those of the original block.
 
-![split benefits]("https://devinbayly.github.io/mantissa Tue Jul  4 03:12:43 2017 .pdf")
+![split benefits]("https://devinbayly.github.io/mantissa_results.pdf")
+
 Now that we have a couple of varieties of compressions methods it's time to check on whether we get performance improvements using compression and uncompression as part of the kernel in the tsodyks-markram synapse model, and this is largely what I'll be working on today and next week.
 
 #### Biggest Wall 
@@ -121,6 +123,7 @@ This week has felt like a bit of a tough wall climb, which is fitting because to
 At the beginning of the week I started to try to create a block version of the classic STREAM test to measure bandwith between DRAM and the CPU. The basic recipe was worked out with a few kinks on the first day, but I began to compare compression vs non-compression bandwith measurements, and soon felt pretty uncertain about what I had been working on: seems like no matter what I did the non-compression runs would far outperform the compressed ones (see this ggplot for informal demonstration compression vs non-compression bandwith measurements).
 
 ![comp vs non-comp bandwith](https://devinbayly.github.io/prettyresultfortim_stream_bench.pdf)
+
 For some reason the rest of the week I was consumed with trying to amend this, but on thursday I had a skype call with my manager, and his response was "yes that's what we expect, and its not likely to change." 
 
 I'm torn between being happy that this isn't an indication of something seriously wrong with the project, but it is also a demonstration of my misunderstanding of why we are running compression in memory if not for speed gains.
