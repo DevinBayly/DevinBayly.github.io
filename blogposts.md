@@ -139,3 +139,26 @@ On wednesday I spoke with my mentor about going back to work more on the tsodyks
 At this point we are now going forward with a means of measuring how the complexity of computation will change whether the compression makes a meaningful difference in the overall run time. I started to draft a measurement program that will start with very simple computations, move up to using differential equations that have known solutions, and get as complicated as performing a Euler method for solving a differential equation.  Ideally by the final category of computation we will see that compression methods contribute negligible amounts to the total time. 
 
 That's where I'm at these days! Cheers
+
+
+#### Week 12 and 13
+
+week12
+
+    - I spent most of my time adding in documentation
+    - preparing for the merge with tim's code
+        - Setting various options for the way that the compression app will
+        be included by default
+    - Found out that both STREAM and the splitting have errors
+    - Tim solved by issues with the STREAM, but I'm currentnly working on the split
+    - Traveled from the states to KL,Malaysia
+
+week13
+
+    - Continued to work on the split
+        - began a traits class approach 
+        - got through the splitting part
+        - started working on the recombining
+    - Talked with Francesco about the report that i'll create
+    - started the IBRO_APRC Brain network analysis workshop
+    - This weekend I'll be trying to wrap up the splitting, and then re-run all of the tools to create data for plots in the report and upcoming presentation
