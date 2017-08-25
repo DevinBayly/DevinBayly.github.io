@@ -1,5 +1,11 @@
 # Blog for the summer of code
 
+### Important Links
+
+[Repository of Code](https://github.com/DevinBayly/neuromapp)
+[PDF copy of report made](https://github.com/DevinBayly/gsoc_report/blob/master/report.pdf)
+
+
 ## In memory compression for neuroinformatics applications
 #### First week ####
 
@@ -57,7 +63,7 @@ Memorial day was last monday, and for some reason this day manages to be a strug
 
 Outside of coding I've been attempting to work through a scary looking trello tab. I'm presently raising funds for my trip to the Neuroinformatics 2017 congress in Kuala-Lumpur, and so had meetings with a few people in my department about travel grants. I also had a meeting with my spring semester Linear Algebra professor to discuss Singular Value Decomposition strategies that might apply to my compression project. Yesterday I attended my first scientific programming bootcamp hosted by the CS department which is helping to patch up holes in my existing c++ knowledge. All fun and helpful stuff to be sure!  
 
-Since this week is the official beginning to the summer of code it make sense that there was plenty to do. I found out that I had misunderstood what the block reading process entailed, and spent time on Monday and Tuesday getting the >> and  << operator setup with the block object. Block input and output operations are now accomplished by stream redirection which most c++ programmers would expect. Once this was set Tim suggested that I create some boost unit tests. Boost is pretty new to me so this came with a bit of an upfront learning curve. I'm still working out the details of why certain cases fail the tests I wrote, but otherwise we are getting supportive results. Most importantly, I put together a zlib un/compression policy following some of Tim's designs that should allow for compression specific options to be set at the time of block declaration. I'll talk more about why we are approaching block compression in this way when I have a better understanding of policy based design.
+Since this week is the official beginning to the summer of code it make sense that there was plenty to do. I found out that I had misunderstood what the block reading process entailed, and spent time on Monday and Tuesday getting the `>>` and  `<<` operator setup with the block object. Block input and output operations are now accomplished by stream redirection which most c++ programmers would expect. Once this was set Tim suggested that I create some boost unit tests. Boost is pretty new to me so this came with a bit of an upfront learning curve. I'm still working out the details of why certain cases fail the tests I wrote, but otherwise we are getting supportive results. Most importantly, I put together a zlib un/compression policy following some of Tim's designs that should allow for compression specific options to be set at the time of block declaration. I'll talk more about why we are approaching block compression in this way when I have a better understanding of policy based design.
 
 Later today I'll be trying out my very first block compressions, and addressing the strangeness that springs up there. Next week I imagine I'll be setting  up unit tests for the compression policy, and starting to read about the uses of inflate and deflate functions that zlib provides to customize my compression to the block.
 
@@ -104,7 +110,7 @@ With a little bit of experimentation I found that another STL tool called "swap_
 
 In analysing blocks that were sorted this way before compression it was clear we were able to get compression factors around 2 times greater than when performed on the original blocks.
 
-![sorting benefits]("https://devinbayly.github.io/comp_types_res.pdf")
+![sorting benefits](https://devinbayly.github.io/comp_types_res.pdf)
 
 This week was much the same, but with an arguably easier transformation performed to the block. Before going any further its worth pointing out that floating point numbers have several different representations: you can have the IEEE745 representation, or you can convert to a triple of binary sets with parts known as the mantissa, the exponent, and the sign. The mantissa is essentially the decimal representation in base 2 once the number has been normalized (decimal place shifted). The exponent is the factor of 2 to the power of the number of places that the decimal was shifted in the previous step. the sign is a 0 or 1 bit representation of whether the original number was positive or negative.
 
@@ -112,7 +118,7 @@ The whole transformation boils down to copying each value from an existing block
 
 When compressions were run on this instead of the original block we got compressions on the scale of 3x better than those of the original block.
 
-![split benefits]("https://devinbayly.github.io/mantissa_results.pdf")
+![split benefits](https://devinbayly.github.io/mantissa_results.pdf)
 
 Now that we have a couple of varieties of compressions methods it's time to check on whether we get performance improvements using compression and uncompression as part of the kernel in the tsodyks-markram synapse model, and this is largely what I'll be working on today and next week.
 
@@ -145,20 +151,20 @@ That's where I'm at these days! Cheers
 
 week12
 
-    - I spent most of my time adding in documentation
-    - preparing for the merge with tim's code
-        - Setting various options for the way that the compression app will
+    * I spent most of my time adding in documentation
+    * preparing for the merge with tim's code
+        * Setting various options for the way that the compression app will
         be included by default
-    - Found out that both STREAM and the splitting have errors
-    - Tim solved by issues with the STREAM, but I'm currentnly working on the split
-    - Traveled from the states to KL,Malaysia
+    * Found out that both STREAM and the splitting have errors
+    * Tim solved by issues with the STREAM, but I'm currentnly working on the split
+    * Traveled from the states to KL,Malaysia
 
 week13
 
-    - Continued to work on the split
-        - began a traits class approach 
-        - got through the splitting part
-        - started working on the recombining
-    - Talked with Francesco about the report that i'll create
-    - started the IBRO_APRC Brain network analysis workshop
-    - This weekend I'll be trying to wrap up the splitting, and then re-run all of the tools to create data for plots in the report and upcoming presentation
+    * Continued to work on the split
+        * began a traits class approach 
+        * got through the splitting part
+        * started working on the recombining
+    * Talked with Francesco about the report that i'll create
+    * started the IBRO_APRC Brain network analysis workshop
+    * This weekend I'll be trying to wrap up the splitting, and then re-run all of the tools to create data for plots in the report and upcoming presentation
