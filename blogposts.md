@@ -2,8 +2,10 @@
 
 ### Important Links
 
-[Repository of Code](https://github.com/DevinBayly/neuromapp)
-[PDF copy of report made](https://github.com/DevinBayly/gsoc_report/blob/master/report.pdf)
+[|Development Repository|](https://github.com/DevinBayly/neuromapp)
+[|Report PDF|](https://github.com/DevinBayly/gsoc_report/blob/master/report.pdf)
+[|Merge Request|](https://github.com/BlueBrain/neuromapp/pull/82)
+
 
 
 ## In memory compression for neuroinformatics applications
@@ -151,20 +153,30 @@ That's where I'm at these days! Cheers
 
 week12
 
-    * I spent most of my time adding in documentation
-    * preparing for the merge with tim's code
-        * Setting various options for the way that the compression app will
-        be included by default
-    * Found out that both STREAM and the splitting have errors
-    * Tim solved by issues with the STREAM, but I'm currentnly working on the split
-    * Traveled from the states to KL,Malaysia
+* I spent most of my time adding in documentation
+* preparing for the merge with tim's code
+    * Setting various options for the way that the compression app will
+    be included by default
+* Found out that both STREAM and the splitting have errors
+* Tim solved by issues with the STREAM, but I'm currentnly working on the split
+* Traveled from the states to KL,Malaysia
 
 week13
 
-    * Continued to work on the split
-        * began a traits class approach 
-        * got through the splitting part
-        * started working on the recombining
-    * Talked with Francesco about the report that i'll create
-    * started the IBRO_APRC Brain network analysis workshop
-    * This weekend I'll be trying to wrap up the splitting, and then re-run all of the tools to create data for plots in the report and upcoming presentation
+* Continued to work on the split
+    * began a traits class approach 
+    * got through the splitting part
+    * started working on the recombining
+* Talked with Francesco about the report that i'll create
+* started the IBRO_APRC Brain network analysis workshop
+* This weekend I'll be trying to wrap up the splitting, and then re-run all of the tools to create data for plots in the report and upcoming presentation
+
+#### Tying it all together
+
+I'm forgetting what weeks we went up to, but this small post should serve to tie up all the events that occurred since the previous installment. I completed the workshop, and managed to put together a really brief demonstration on adding interfaces to the Nipype imaging workflow tool. The next big hurdle was presenting my summer's work at the INCF congress. I had a few very short nights leading up to this, but assembled a somewhat comprehensive presentation of in memory compression tools for Neuroinformatics applications. The rest of the congress was very eye opening as to what work is going on in the Neuroinformatics world, and by the end of it I was pretty wiped out. 
+
+The time that I had left in the city went into finishing the report. As tricky at times as it was to describe the summer in a sufficiently detailed manner I think it has helped clarify why DRAM can present a bottleneck, and what the relationship is between various types of memory(virtual vs RAM), caches, and the central processor. No doubt there is much more for me to learn and discover, but at the end of this summer of code, I feel like I have learned an inordinate amount from this project, and helped to meet a few of our original goals investigating in memory compression for Neuroinformatics applications.
+
+Tomorrow I fly to Geneva, and actually get to meet the folks I've been working with since the start of the Summer!
+
+Thanks for reading, and stay posted for other projects to come.
